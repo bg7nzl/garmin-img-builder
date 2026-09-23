@@ -97,6 +97,15 @@ mkgmap:country=SVK & mkgmap:city!=* & mkgmap:admin_level8=* { set mkgmap:city='$
 mkgmap:country=GRE & mkgmap:city!=* & mkgmap:admin_level7=* { set mkgmap:city='${mkgmap:admin_level7}' }
 mkgmap:country=GRE & mkgmap:city!=* & mkgmap:admin_level8=* { set mkgmap:city='${mkgmap:admin_level8}' }
 
+# 中国：佳明的「地区」是省。区县（admin_level=6）写进地区时，设备会显示「所在地区无效」。
+# 台湾、香港、澳门在 OSM 里是单独的国家代码，这张图并进中国。
+mkgmap:country=TWN { set mkgmap:country=CHN }
+mkgmap:country=HKG { set mkgmap:country=CHN }
+mkgmap:country=MAC { set mkgmap:country=CHN }
+mkgmap:country=CHN & mkgmap:region!=* & mkgmap:admin_level4=* { set mkgmap:region='${mkgmap:admin_level4}' }
+mkgmap:country=CHN & mkgmap:city!=* & mkgmap:admin_level5=* { set mkgmap:city='${mkgmap:admin_level5}' }
+mkgmap:country=CHN & mkgmap:city!=* & mkgmap:admin_level6=* { set mkgmap:city='${mkgmap:admin_level6}' }
+
 # common rules for all the rest of countries
 mkgmap:region!=* & mkgmap:admin_level6=* { set mkgmap:region='${mkgmap:admin_level6}' } 
 mkgmap:region!=* & mkgmap:admin_level5=* { set mkgmap:region='${mkgmap:admin_level5}' } 

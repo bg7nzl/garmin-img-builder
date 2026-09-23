@@ -16,9 +16,9 @@
 ./build.sh
 ```
 
-脚本会在缺少 Java、`wget` 或 `unzip` 时用 apt 安装（可能要求输入 sudo 密码），然后下载数据并编译。mkgmap 和 splitter 由脚本自己下载，不用单独安装。
+脚本会在缺少 Java、`wget`、`curl`、`unzip` 或 `osmium` 时用 apt 安装（可能要求输入 sudo 密码），然后下载数据并编译。mkgmap 和 splitter 由脚本自己下载，不用单独安装。地图范围按 CN-border 的国界裁切，数据来自 Geofabrik 的中国、台湾、印度东部、印度北部、印度东北部和不丹提取。
 
-第一次大约要数小时：下载约 4GB（视网速而定），切块约 15 分钟，编译约 1 小时。请预留约 30GB 磁盘。默认按 2 核、8GB 内存设置（Java 堆 3GB、并行 2）。机器更大时可以加大，例如：
+第一次大约要数小时：下载约 8GB（OSM 约 4GB，加上约 3–6GB 的 DEM，视网速而定），切块约 15 分钟，编译约 1–2 小时。请预留约 40GB 磁盘。默认按 2 核、8GB 内存设置（Java 堆 3GB、并行 2）。机器更大时可以加大，例如：
 
 ```bash
 JAVA_XMX=6g MAX_JOBS=4 ./build.sh
@@ -35,7 +35,7 @@ JAVA_XMX=6g MAX_JOBS=4 ./build.sh
 | `out/936/gmapsupp.img` | 设备图 |
 | `out/936/OSM China 936.gmap/` | BaseCamp 图 |
 
-图名是 **OSM China 936**，使用 GBK 字库，可以显示中文。
+图名是 **OSM China 936**，使用 GBK 字库，可以显示中文。国界和十段线来自 [CN-border](https://github.com/gmt-china/china-geospatial-data)（1:100 万基础地理数据库），覆盖台湾、藏南、阿克赛钦、钓鱼岛和南海诸岛；OSM 自带的国界不画。图内含 3 角秒 DEM（[Viewfinder Panoramas](https://www.viewfinderpanoramas.org/dem3.html)，Jonathan de Ferranti，SRTM 空洞已填）。设备用它画山体阴影和海拔剖面。
 
 ## 只重跑某一步
 

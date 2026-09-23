@@ -128,7 +128,8 @@ natural=wood [0x50 resolution 20]
 
 # building tag should be last
 amenity=* & area!=no & amenity!=grave_yard {add name='${amenity|subst:"_=> "}'} [0x23 resolution 24]
-building=* & building!=no [0x13 resolution 24]
+# 无名称楼不画轮廓（地址搜索仍用 addr:housenumber）。有名称的楼保留轮廓。
+building=* & building!=no & name=* [0x13 resolution 24]
 tourism=* & area!=no & waterway!=* {add name='${tourism|subst:"_=> "}'} [0x21 resolution 24]
 
 # man_made can be used on areas or lines

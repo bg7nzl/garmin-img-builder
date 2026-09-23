@@ -10,7 +10,9 @@ ensure_deps() {
   local missing=()
   command -v java >/dev/null 2>&1 || missing+=(openjdk-17-jre-headless)
   command -v wget >/dev/null 2>&1 || missing+=(wget)
+  command -v curl >/dev/null 2>&1 || missing+=(curl)
   command -v unzip >/dev/null 2>&1 || missing+=(unzip)
+  command -v osmium >/dev/null 2>&1 || missing+=(osmium-tool)
   if ((${#missing[@]} == 0)); then
     return 0
   fi
@@ -31,7 +33,7 @@ if [[ "$stage" == "all" ]]; then
   echo "==> 编译中国 OSM 佳明图（GBK 936）"
   echo "    本仓库只提供脚本，供学习研究。不包含、不分发地图数据或编译结果。"
   echo "    编制、公开或向他人提供中国地图须自行遵守测绘与地图管理规定。"
-  echo "    首次下载约 4GB。切块约 15 分钟，编译约 1 小时。请预留约 30GB 磁盘。"
+  echo "    首次下载约 8GB（地图数据加 DEM）。切块约 15 分钟，编译约 1–2 小时。请预留约 40GB 磁盘。"
 fi
 
 case "$stage" in

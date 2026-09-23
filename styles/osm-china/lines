@@ -241,8 +241,10 @@ railway=platform & tmp:stopMopUp!=yes [0x16 road_class=0 road_speed=0 resolution
 
 # The following boundary styles are after the highway rules because ways
 # are frequently tagged with both and we want the highway to take priority.
-boundary=administrative {name '${mkgmap:boundary_name}'}
-boundary=administrative & admin_level<3 [0x1e resolution 12]
+boundary=administrative & mkgmap:boundary_name=* {name '${mkgmap:boundary_name}'}
+# 国界只画 CN-border。OSM 的 admin_level=2 在藏南、阿克赛钦等地不是这条线。
+boundary=administrative & (source=cn-border | source=cn-dash) [0x1e resolution 12]
+boundary=administrative & admin_level<3 {delete boundary}
 boundary=administrative & admin_level<5 [0x1d resolution 19]
 boundary=administrative & admin_level<7 [0x1c resolution 21]
 boundary=administrative & admin_level<9 [0x1c resolution 22]
