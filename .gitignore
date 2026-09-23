@@ -1,0 +1,21 @@
+# 凭证（复制 upload.ini.example 为 upload.ini 后本地填写）
+scripts/upload.ini
+.env
+.env.*
+*.pem
+*.key
+
+# OSM 源数据、切块、编译产物、日志、下载的工具包
+data/
+work/
+out/
+logs/
+vendor/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# 编辑器与系统
+.cursor/
+.DS_Store

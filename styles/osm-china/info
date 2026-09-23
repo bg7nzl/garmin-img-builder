@@ -1,0 +1,22 @@
+#
+# This file contains information about the style.
+# It is completely optional.
+# 
+
+
+# A short one line description of the style
+#
+summary: 中国图：default + 小区/neighbourhood 名称
+
+# Version of the style itself
+#
+version=1.0
+
+# A longer description of the style.
+description {
+基于 mkgmap default。中国补丁：
+小区名、有名字的商业/零售等用地、街道/社区、
+site 关系、office、市场、小居民点、
+place=locality、地铁站/出入口、收费站；name:zh 回填。
+面状名称经 --add-pois-to-areas 在入口或中心出点。
+}
